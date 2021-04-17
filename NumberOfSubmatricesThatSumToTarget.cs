@@ -25,7 +25,8 @@ Constraints:
 Available at: https://leetcode.com/problems/number-of-submatrices-that-sum-to-target/ (Access in 17/04/2021)
 
 This solution beats 100% in memory.
-Author of solution: Lucas Paz.
+
+Author of the solution: Lucas Paz.
 */
 public class Solution
 {
@@ -55,13 +56,13 @@ public class Solution
                 {
                     int thisPreffixSum = matrix[row][column];
 
-                    //go to rows above adding their preffix sums
+                    // go to rows above adding their preffix sums
                     for (int remainingRow = row - 1; remainingRow >= upperRow; remainingRow--)
                         thisPreffixSum += matrix[remainingRow][column];
 
-                    //(thisPreffix - desirablePreffixSum) must be equal to target:
-                    //thisPreffix - desirablePreffixSum = target.
-                    //Hence: desirablePreffixSum = thisPreffixSum - target;
+                    // (thisPreffix - desirablePreffixSum) must be equal to target:
+                    // thisPreffix - desirablePreffixSum = target.
+                    // Hence: desirablePreffixSum = thisPreffixSum - target;
                     int desirablePreffixSum = thisPreffixSum - target;
 
                     if (preffixSumsAndCounters.ContainsKey(desirablePreffixSum))
@@ -75,15 +76,15 @@ public class Solution
             }
         }
 
-            return numberOfSubmatricesThatSumToTarget;
-        }
+        return numberOfSubmatricesThatSumToTarget;
+    }
 
-        private void transformSimpleMatrixIntoRowPreffixSumsMatrix(int[][] matrix)
-        {
-            int m = matrix.Length, n = matrix[0].Length;
+    private void transformSimpleMatrixIntoRowPreffixSumsMatrix(int[][] matrix)
+    {
+        int m = matrix.Length, n = matrix[0].Length;
 
-            for (int row = 0; row < m; row++)
-                for (int column = 1; column < n; column++)
-                    matrix[row][column] += matrix[row][column - 1];
-        }
+        for (int row = 0; row < m; row++)
+            for (int column = 1; column < n; column++)
+                matrix[row][column] += matrix[row][column - 1];
+    }
 }
