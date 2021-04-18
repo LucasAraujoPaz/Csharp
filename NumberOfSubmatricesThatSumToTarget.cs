@@ -43,7 +43,7 @@ public class Solution
 
         IDictionary<int, int> preffixSumsAndCounters = new Dictionary<int, int>();
 
-        transformSimpleMatrixIntoRowPreffixSumsMatrix(matrix);
+        TransformSimpleMatrixIntoRowPreffixSumsMatrix(matrix);
 
         for (int upperRow = 0; upperRow < m; upperRow++)
         {
@@ -79,7 +79,7 @@ public class Solution
         return numberOfSubmatricesThatSumToTarget;
     }
 
-    private void transformSimpleMatrixIntoRowPreffixSumsMatrix(int[][] matrix)
+    private void TransformSimpleMatrixIntoRowPreffixSumsMatrix(int[][] matrix)
     {
         int m = matrix.Length, n = matrix[0].Length;
 
