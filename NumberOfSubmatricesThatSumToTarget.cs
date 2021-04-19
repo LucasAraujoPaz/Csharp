@@ -24,7 +24,7 @@ Constraints:
 
 Available at: https://leetcode.com/problems/number-of-submatrices-that-sum-to-target/ (Access in 17/04/2021)
 
-This solution beats 100% in memory.
+This solution beats 100% C# submissions in memory.
 
 Author of the solution: Lucas Paz.
 */
