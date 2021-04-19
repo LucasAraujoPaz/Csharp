@@ -35,7 +35,7 @@ Finger 2 on letter 'E' -> cost = Distance from letter 'K' to letter 'E' = 1
 Total distance = 3
 
 My solution uses Dynamic Programming (DP) and recursion,
-and beats 100% other solutions in memory.
+and beats 100% C# submissions in memory.
 
 Author Lucas Paz.
 */
