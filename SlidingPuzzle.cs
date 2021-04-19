@@ -18,6 +18,13 @@ Example:
 Input: board = [[1,2,3],[4,0,5]]
 Output: 1
 Explanation: Swap the 0 and the 5 in one move.
+
+------------------------------------------------
+
+My solution uses breadth-first through queues and a kind of "decimal mask", represented by the variable "stateToInt".
+It beats 100% other C# solutions in runtime.
+
+Author of Solution: Lucas Paz.
 */
 
 public class Solution 
@@ -62,7 +69,7 @@ public class Solution
             if (visitedStates.Contains(stateToInt))
                 continue;
             
-            Move(state, rowOf0, columnOf0, move);      
+            MoveIn4Directions(state, rowOf0, columnOf0, move);      
             
             visitedStates.Add(stateToInt);
         }
@@ -70,7 +77,7 @@ public class Solution
         return minimumNumberOfMoves;
     }
     
-    private void Move(int[][] state, int rowOf0, int columnOf0, int move)
+    private void MoveIn4Directions(int[][] state, int rowOf0, int columnOf0, int move)
     {
         if (rowOf0 == 0)
             Swap(state, rowOf0, columnOf0, 1, columnOf0, move);
@@ -85,15 +92,15 @@ public class Solution
             Swap(state, rowOf0, columnOf0, rowOf0, columnOf0 - 1, move);
     }
     
-    private void Swap(int[][] state, int rowOf0, int columnOf0, int row, int column, int move)
+    private void Swap(int[][] state, int rowOf0, int columnOf0, int rowOfOther, int columnOfOther, int move)
     {
         int[][] clone = new int[2][] {
             new int[3] {state[0][0], state[0][1], state[0][2]},
             new int[3] {state[1][0], state[1][1], state[1][2]}
         };       
         
-        clone[row][column] = 0;
-        clone[rowOf0][columnOf0] = state[row][column];
+        clone[rowOfOther][columnOfOther] = 0;
+        clone[rowOf0][columnOf0] = state[rowOfOther][columnOfOther];
         
         states.Enqueue(clone);
         numberOfMoves.Enqueue(move + 1);
