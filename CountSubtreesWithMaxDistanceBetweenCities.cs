@@ -29,8 +29,8 @@ The subtrees with subsets {1,2,3}, {1,2,4}, {2,3,4} and {1,2,3,4} have a max dis
 No subtree has two nodes where the max distance between them is 3.
 ---------
 
-My solution uses Floyd-Warshall Algorithm to find all the distances 
-and brute-force all the possible combinations of cities to count the diameters.
+My solution uses Floyd-Warshall Algorithm to find all the distances.
+Then, it brute-forces all the possible combinations of cities through recursion and back-tracking with a "subset" LinkedList to count the diameters.
 
 Author: Lucas Paz.
 */
@@ -120,7 +120,7 @@ public class Solution
             }
 
         int numberOfCities = subsetOfCities.Count;
-        if (numberOfEdges / 2 != numberOfCities - 1) return;
+        if (numberOfEdges / 2 != numberOfCities - 1) return; // if cities are not linked
 
         int oneBasedIndex = maxDistance - 1;
         
