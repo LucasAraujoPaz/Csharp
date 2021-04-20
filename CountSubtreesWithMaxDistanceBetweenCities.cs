@@ -93,7 +93,7 @@ public class Solution
             for (int i = start; i <= n; i++)
             {
                 subsetOfCities.AddLast(i);
-                calculateSubset();
+                CheckIfSubsetIsValidAndIncrementNumberOfSubGraphsIfItIs();
                 subsetOfCities.RemoveLast();
             }
             return;
@@ -107,7 +107,7 @@ public class Solution
         }
     }
     
-    private void calculateSubset()
+    private void CheckIfSubsetIsValidAndIncrementNumberOfSubGraphsIfItIs()
     {
         int maxDistance = 1;
         int numberOfEdges = 0;
@@ -115,6 +115,7 @@ public class Solution
         foreach (int city in subsetOfCities)
             foreach (int otherCity in subsetOfCities)
             {
+                if (city == otherCity) continue;
                 if (distancesMatrix[city, otherCity] == 1) numberOfEdges++;
                 maxDistance = Math.Max(maxDistance, distancesMatrix[city, otherCity]);
             }
