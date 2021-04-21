@@ -111,17 +111,20 @@ public class Solution
     {
         int maxDistance = 1;
         int numberOfEdges = 0;
-
-        foreach (int city in subsetOfCities)
-            foreach (int otherCity in subsetOfCities)
-            {
-                if (city == otherCity) continue;
+        
+        for (LinkedListNode<int> i = subsetOfCities.First; i != null; i = i.Next)
+        {
+            int city = i.Value;
+            for (LinkedListNode<int> j = i.Next; j != null; j = j.Next)
+            { 
+                int otherCity = j.Value;
                 if (distancesMatrix[city, otherCity] == 1) numberOfEdges++;
                 maxDistance = Math.Max(maxDistance, distancesMatrix[city, otherCity]);
             }
+        }
 
         int numberOfCities = subsetOfCities.Count;
-        if (numberOfEdges / 2 != numberOfCities - 1) return; // if cities are not linked
+        if (numberOfEdges != numberOfCities - 1) return; // if cities are not linked
 
         int oneBasedIndex = maxDistance - 1;
         
