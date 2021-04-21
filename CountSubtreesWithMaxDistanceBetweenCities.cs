@@ -81,7 +81,8 @@ public class Solution
         
         for (int k = 1; k <= n; k++)
             for (int i = 1; i <= n; i++)
-                for (int j = 1; j <= n; j++)
+                if (k == i) continue;
+                else for (int j = 1; j <= n; j++)
                     if (distancesMatrix[i, k] + distancesMatrix[k, j] < distancesMatrix[i, j])
                         distancesMatrix[i, j] = distancesMatrix[i, k] + distancesMatrix[k, j];
     }
